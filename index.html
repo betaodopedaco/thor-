@@ -1,75 +1,205 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minhas Imagens</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .image-container {
-            border: 1px solid #ddd;
-            padding: 10px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Asgard Store">
+  <meta name="description" content="Loja oficial de produtos do Thor - Camisas, bonecos, martelos e colecionáveis do Deus do Trovão">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Thor Store | Produtos Oficiais do Deus do Trovão">
+  <meta property="og:description" content="Adquira os melhores produtos colecionáveis do Thor e da mitologia nórdica">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/og-image.jpg"> 
+
+  <title>Thor Store | Produtos Oficiais do Deus do Trovão</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap"></noscript>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
 
-    <div class="image-container">
-        <img src="https://i.supaimg.com/c0963df6-8bb1-4a6a-9887-f13bbad03d97.jpg" alt="Imagem 1">
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="img/logo-thor-store.png" alt="Thor Store Logo">
+        </a>
+      </div>
+      <nav class="navbar">
+        <ul class="nav-menu">
+          <li><a href="#home">Início</a></li>
+          <li><a href="#products">Produtos</a></li>
+          <li><a href="#image-gallery">Galeria</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="nav-toggle" aria-label="Toggle Navigation">
+        <i class="fas fa-bars"></i>
+      </div>
     </div>
+  </header>
 
-    <div class="image-container">
-        <img src="https://i.supaimg.com/2c2643b0-71a3-48e4-b261-5e38c842d792.jpg" alt="Imagem 2">
+  <section id="home" class="hero-section">
+    <div class="hero-content">
+      <h1>Libere o Poder do Trovão!</h1>
+      <p>Os mais épicos produtos do Thor e da mitologia nórdica, direto de Asgard para você.</p>
+      <a href="#products" class="btn btn-primary">Ver Produtos</a>
     </div>
+  </section>
 
-    <div class="image-container">
-        <img src="https://i.supaimg.com/e927a6f3-1040-496d-b7b8-299153214aae.jpg" alt="Imagem 3">
+  <section id="products" class="products-section section-padding">
+    <div class="container">
+      <h2>Nossos Produtos Mais Vendidos</h2>
+      <div class="product-grid">
+        <div class="product-item">
+          <img src="img/product-mjoelnir.png" alt="Réplica do Martelo Mjölnir">
+          <h3>Mjölnir - Martelo do Thor</h3>
+          <p>Réplica autêntica em escala real, digna de um Deus.</p>
+          <span class="price">R$ 499,90</span>
+          <button class="btn btn-secondary">Comprar</button>
+        </div>
+        <div class="product-item">
+          <img src="img/product-stormbreaker.png" alt="Réplica do Machado Rompe-Tormentas">
+          <h3>Stormbreaker - Rompe-Tormentas</h3>
+          <p>O machado forjado para aniquilar Thanos, agora é seu!</p>
+          <span class="price">R$ 599,90</span>
+          <button class="btn btn-secondary">Comprar</button>
+        </div>
+        <div class="product-item">
+          <img src="img/product-helmet.png" alt="Capacete de Thor">
+          <h3>Capacete de Thor</h3>
+          <p>Conforto e estilo para se sentir um verdadeiro Asgardiano.</p>
+          <span class="price">R$ 299,90</span>
+          <button class="btn btn-secondary">Comprar</button>
+        </div>
+        <div class="product-item">
+          <img src="img/product-tshirt.png" alt="Camiseta Thor Logo">
+          <h3>Camiseta Thor Logo</h3>
+          <p>Mostre seu amor pelo Deus do Trovão com estilo.</p>
+          <span class="price">R$ 89,90</span>
+          <button class="btn btn-secondary">Comprar</button>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="image-container">
-        <img src="https://i.supaimg.com/15937189-b990-4ec9-b225-69cb3a783de2.jpg" alt="Imagem 4">
+  ---
+
+  <section id="image-gallery" class="products-section section-padding">
+    <div class="container">
+      <h2>Nossa Galeria de Imagens</h2>
+      <div class="product-grid"> <div class="product-item">
+          <img src="https://i.supaimg.com/c0963df6-8bb1-4a6a-9887-f13bbad03d97.jpg" alt="Imagem da Galeria 1">
+          </div>
+        <div class="product-item">
+          <img src="https://i.supaimg.com/2c2643b0-71a3-48e4-b261-5e38c842d792.jpg" alt="Imagem da Galeria 2">
+        </div>
+        <div class="product-item">
+          <img src="https://i.supaimg.com/e927a6f3-1040-496d-b7b8-299153214aae.jpg" alt="Imagem da Galeria 3">
+        </div>
+        <div class="product-item">
+          <img src="https://i.supaimg.com/15937189-b990-4ec9-b225-69cb3a783de2.jpg" alt="Imagem da Galeria 4">
+        </div>
+        <div class="product-item">
+          <img src="https://i.supaimg.com/8c2ff470-7e88-429d-b431-56aa8bb8959d.jpg" alt="Imagem da Galeria 5">
+        </div>
+        <div class="product-item">
+          <img src="https://i.supaimg.com/fec3a977-645e-4be3-9356-faa241d751ec.jpg" alt="Imagem da Galeria 6">
+        </div>
+        <div class="product-item">
+          <img src="https://i.supaimg.com/5c3ef16e-e249-4dcf-b59f-3c9a8854d879.jpg" alt="Imagem da Galeria 7">
+        </div>
+        <div class="product-item">
+          <img src="https://i.supaimg.com/e32e30f8-614b-436e-ac2b-aa55df69bc03.jpg" alt="Imagem da Galeria 8">
+        </div>
+        <div class="product-item">
+          <img src="https://i.supaimg.com/221b538d-bbc4-4a20-85c9-c59f4d4e710f.jpg" alt="Imagem da Galeria 9">
+        </div>
+        <div class="product-item">
+          <img src="https://i.supaimg.com/9e425301-0f92-43df-8736-23f6f768d34a.jpg" alt="Imagem da Galeria 10">
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="image-container">
-        <img src="https://i.supaimg.com/8c2ff470-7e88-429d-b431-56aa8bb8959d.jpg" alt="Imagem 5">
+  ---
+
+  <section id="about" class="about-section section-padding bg-dark">
+    <div class="container">
+      <div class="about-content">
+        <h2>Sobre a Thor Store</h2>
+        <p>Somos fãs fervorosos da mitologia nórdica e do universo Marvel. A Thor Store nasceu da paixão por colecionáveis e da vontade de trazer para outros entusiastas os produtos mais autênticos e de alta qualidade do Thor e seus aliados.</p>
+        <p>Cada item em nossa loja é cuidadosamente selecionado para garantir a melhor experiência, desde réplicas perfeitas de armas até vestuário e acessórios que refletem a grandiosidade de Asgard.</p>
+        <a href="#contact" class="btn btn-outline-light">Fale Conosco</a>
+      </div>
+      <div class="about-image">
+        <img src="img/about-thor.png" alt="Ilustração do Thor em pose heroica">
+      </div>
     </div>
+  </section>
 
-    <div class="image-container">
-        <img src="https://i.supaimg.com/fec3a977-645e-4be3-9356-faa241d751ec.jpg" alt="Imagem 6">
+  <section class="cta-section">
+    <div class="container">
+      <h3>Pronto para Empunhar o Poder?</h3>
+      <p>Não perca tempo! Seus itens de colecionador estão esperando por você.</p>
+      <a href="#products" class="btn btn-primary">Compre Agora!</a>
     </div>
+  </section>
 
-    <div class="image-container">
-        <img src="https://i.supaimg.com/5c3ef16e-e249-4dcf-b59f-3c9a8854d879.jpg" alt="Imagem 7">
+  <section id="contact" class="contact-section section-padding">
+    <div class="container">
+      <h2>Entre em Contato</h2>
+      <p class="contact-intro">Dúvidas, sugestões ou apenas quer falar sobre o Thor? Mande uma mensagem!</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Informações de Contato</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Rua Bifrost, 1000 - Asgard, UCM</p>
+          <p><i class="fas fa-phone"></i> (99) 99999-9999</p>
+          <p><i class="fas fa-envelope"></i> contato@thorstore.com</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <form class="contact-form">
+          <h3>Envie sua Mensagem</h3>
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Seu Nome" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Seu E-mail" required>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" rows="5" placeholder="Sua Mensagem" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+        </form>
+      </div>
     </div>
+  </section>
 
-    <div class="image-container">
-        <img src="https://i.supaimg.com/e32e30f8-614b-436e-ac2b-aa55df69bc03.jpg" alt="Imagem 8">
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Thor Store. Todos os direitos reservados. Não somos afiliados à Marvel Studios ou Disney.</p>
+      <div class="footer-links">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+      </div>
     </div>
+  </footer>
 
-    <div class="image-container">
-        <img src="https://i.supaimg.com/221b538d-bbc4-4a20-85c9-c59f4d4e710f.jpg" alt="Imagem 9">
-    </div>
-
-    <div class="image-container">
-        <img src="https://i.supaimg.com/9e425301-0f92-43df-8736-23f6f768d34a.jpg" alt="Imagem 10">
-    </div>
-
+  <script src="script.js"></script>
 </body>
 </html>
