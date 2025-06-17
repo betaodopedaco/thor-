@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="author" content="Asgard Store">
   <meta name="description" content="Loja oficial de produtos do Thor - Camisas, bonecos, martelos e colecionáveis do Deus do Trovão">
-  <meta name="robots" content="index, follow">
   <meta property="og:title" content="Thor Store | Produtos Oficiais do Deus do Trovão">
   <meta property="og:description" content="Adquira os melhores produtos colecionáveis do Thor e da mitologia nórdica">
   <meta property="og:type" content="website">
@@ -18,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+  
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -47,29 +46,50 @@
         <li><a href="#collectibles">Colecionáveis</a></li>
         <li><a href="#contact">Contato</a></li>
       </ul>
+      <div class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+      </div>
     </nav>
   </header>
 
+  <div class="overlay"></div>
+
+  <div class="cart-modal">
+    <div class="cart-header">
+      <h3>Seu Carrinho</h3>
+      <button class="close-cart">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="cart-items">
+      </div>
+    <div class="cart-total">
+      <span>Total:</span>
+      <span class="cart-total-value">R$ 0,00</span>
+    </div>
+    <div class="cart-buttons">
+      <button class="btn btn-secondary">Continuar Comprando</button>
+      <button class="btn btn-primary">Finalizar Compra</button>
+    </div>
+  </div>
+
   <main>
-    <!-- HERO -->
     <section id="hero" class="hero">
       <div class="container hero-content">
         <h1>O Poder do Trovão em Suas Mãos</h1>
         <p>Explore a maior coleção de artefatos e vestuários inspirados no Deus do Trovão.</p>
         <a href="#products" class="btn btn-primary">Ver Produtos</a>
       </div>
-      <div class="mjolnir-3d" aria-hidden="true">
-        <div class="head"></div>
-        <div class="handle"></div>
-        <div class="lightning"></div>
+      <div class="hero-image-3d">
+        <img src="https://i.supaimg.com/e32e30f8-614b-436e-ac2b-aa55df69bc03.jpg" alt="Personagem Thor 3D">
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container grid">
         <div class="about-text">
-          <h2>Sobre a Thor Store</h2>
+          <h2 class="section-title">Sobre a Thor Store</h2>
           <p>Bem-vindo à Thor Store, seu portal exclusivo para o universo de Asgard! Somos apaixonados pela mitologia nórdica e, claro, pelo poderoso Thor.</p>
           <p>Nosso objetivo é trazer a você produtos de alta qualidade que capturem a essência do Deus do Trovão.</p>
           <ul>
@@ -85,10 +105,9 @@
       </div>
     </section>
 
-    <!-- PRODUCTS -->
     <section id="products" class="section">
       <div class="container">
-        <h2>Nossos Produtos</h2>
+        <h2 class="section-title">Nossos Produtos</h2>
         <div class="grid products-grid">
 
           <div class="card">
@@ -96,7 +115,7 @@
             <h3>Camisa "Sol de Asgard"</h3>
             <p>Leve o brilho de Asgard para qualquer lugar com esta camisa única.</p>
             <span class="price">R$ 129,90</span>
-            <button class="btn btn-primary">Comprar Agora</button>
+            <button class="btn btn-primary add-to-cart" data-id="1" data-name="Camisa Sol de Asgard" data-price="129.90" data-img="https://i.supaimg.com/9e425301-0f92-43df-8736-23f6f768d34a.jpg">Comprar Agora</button>
           </div>
 
           <div class="card">
@@ -104,7 +123,7 @@
             <h3>Camisa "Explosão Cósmica"</h3>
             <p>Uma explosão de cores e energia, ideal para quem busca aventura em Midgard.</p>
             <span class="price">R$ 139,90</span>
-            <button class="btn btn-primary">Comprar Agora</button>
+            <button class="btn btn-primary add-to-cart" data-id="2" data-name="Camisa Explosão Cósmica" data-price="139.90" data-img="https://i.supaimg.com/221b538d-bbc4-4a20-85c9-c59f4d4e710f.jpg">Comprar Agora</button>
           </div>
 
           <div class="card">
@@ -112,7 +131,7 @@
             <h3>Boneco de Ação Thor</h3>
             <p>Detalhes impressionantes e acabamento de colecionador.</p>
             <span class="price">R$ 249,90</span>
-            <button class="btn btn-primary">Comprar Agora</button>
+            <button class="btn btn-primary add-to-cart" data-id="3" data-name="Boneco de Ação Thor" data-price="249.90" data-img="https://i.supaimg.com/e32e30f8-614b-436e-ac2b-aa55df69bc03.jpg">Comprar Agora</button>
           </div>
 
           <div class="card">
@@ -120,7 +139,7 @@
             <h3>Braceletes do Trovão</h3>
             <p>Feitos para quem é digno de carregar o poder de Asgard.</p>
             <span class="price">R$ 499,90</span>
-            <button class="btn btn-primary">Comprar Agora</button>
+            <button class="btn btn-primary add-to-cart" data-id="4" data-name="Braceletes do Trovão" data-price="499.90" data-img="https://i.supaimg.com/5c3ef16e-e249-4dcf-b59f-3c9a8854d879.jpg">Comprar Agora</button>
           </div>
 
           <div class="card">
@@ -128,7 +147,7 @@
             <h3>Manoplas do Reino</h3>
             <p>Proteja-se com estilo e poder, inspirado nos deuses.</p>
             <span class="price">R$ 89,90</span>
-            <button class="btn btn-primary">Comprar Agora</button>
+            <button class="btn btn-primary add-to-cart" data-id="5" data-name="Manoplas do Reino" data-price="89.90" data-img="https://i.supaimg.com/fec3a977-645e-4be3-9356-faa241d751ec.jpg">Comprar Agora</button>
           </div>
 
           <div class="card">
@@ -136,17 +155,16 @@
             <h3>Capacete de Asgard</h3>
             <p>Complete seu traje de batalha com este capacete lendário.</p>
             <span class="price">R$ 389,90</span>
-            <button class="btn btn-primary">Comprar Agora</button>
+            <button class="btn btn-primary add-to-cart" data-id="6" data-name="Capacete de Asgard" data-price="389.90" data-img="https://i.supaimg.com/15937189-b990-4ec9-b225-69cb3a783de2.jpg">Comprar Agora</button>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- COLLECTIBLES -->
     <section id="collectibles" class="section">
       <div class="container">
-        <h2>Colecionáveis 3D</h2>
+        <h2 class="section-title">Colecionáveis 3D</h2>
         <p style="text-align: center; color: var(--asgard-silver); font-size: 1.2rem; margin-bottom: 3rem;">
           Explore nossa galeria de colecionáveis digitais e réplicas 3D impressionantes do universo de Thor.
         </p>
@@ -188,7 +206,6 @@
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta-secondary">
       <div class="container">
         <h2>Não Perca Tempo, Torne-se um Asgardiano!</h2>
@@ -197,11 +214,10 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact" class="section">
       <div class="container">
-        <h2>Fale Conosco</h2>
-        <form class="contact-form">
+        <h2 class="section-title">Fale Conosco</h2>
+        <form class="contact-form" id="contactForm">
           <div class="form-group">
             <label for="name">Seu Nome:</label>
             <input type="text" id="name" name="name" placeholder="Digite seu nome completo" required>
@@ -231,7 +247,6 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-grid">
       <div>
@@ -251,7 +266,7 @@
           <li><a href="#about">Sobre Nós</a></li>
           <li><a href="#products">Nossos Produtos</a></li>
           <li><a href="#collectibles">Colecionáveis</a></li>
-          <li><a href="#contact">Contato</a></li>
+          <li><a href="#">Contato</a></li>
         </ul>
       </div>
       <div>
@@ -277,4 +292,4 @@
 
   <script src="script.js"></script>
 </body>
-    </html>
+</html>
