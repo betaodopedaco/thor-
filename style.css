@@ -5,7 +5,7 @@
   --storm-blue: #0066cc;
   --storm-dark: #004a99;
   --lightning-yellow: #FFCC00;
-  --dark-metal: #222;
+  --dark-metal: #111;
   --asgard-background: linear-gradient(135deg, #0a0a2a, #1a1a4a);
   --transition: all 0.3s ease;
   --thunder: #4A4AFF;
@@ -17,6 +17,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* Propriedade para melhorar a experiência de toque */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -25,6 +27,7 @@ body {
   background: var(--asgard-background);
   background-attachment: fixed;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
 /* Storm effect */
@@ -34,6 +37,7 @@ body {
   z-index: -1;
   opacity: 0.3;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .storm-bg .lightning {
@@ -66,6 +70,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: opacity 0.5s, visibility 0.5s;
 }
 
 .preloader-spinner {
@@ -93,27 +98,32 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  background: rgba(34, 34, 34, 0.95);
+  background: rgba(17, 17, 17, 0.95);
   z-index: 1000;
   border-bottom: 2px solid var(--asgard-gold);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s ease;
 }
 
 header.header-scrolled {
-  background: rgba(34, 34, 34, 0.98);
+  background: rgba(17, 17, 17, 0.98);
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 0;
+  padding: 1.2rem 0;
 }
 
 .logo {
   font-family: 'Cinzel', serif;
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: var(--asgard-gold);
   text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .nav-menu {
@@ -122,7 +132,7 @@ header.header-scrolled {
 }
 
 .nav-menu li {
-  margin-left: 2rem;
+  margin-left: 1.8rem;
 }
 
 .nav-menu a {
@@ -130,10 +140,27 @@ header.header-scrolled {
   text-decoration: none;
   font-weight: 600;
   position: relative;
+  padding: 0.5rem 0;
+  transition: var(--transition);
 }
 
 .nav-menu a:hover {
   color: var(--asgard-gold);
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--asgard-gold);
+  transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
 }
 
 .nav-toggle {
@@ -142,6 +169,37 @@ header.header-scrolled {
   border: none;
   color: var(--asgard-silver);
   font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.cart-icon {
+  position: relative;
+  margin-left: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--asgard-silver);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cart-icon:hover {
+  color: var(--asgard-gold);
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: var(--asgard-gold);
+  color: var(--dark-metal);
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Hero */
@@ -151,23 +209,58 @@ header.header-scrolled {
   align-items: center;
   background: radial-gradient(circle at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%);
   padding-top: 100px;
+  position: relative;
+  overflow: hidden;
+  /* Garantir que a perspectiva 3D funcione */
+  perspective: 1000px; /* Define a distância do olho do observador */
 }
 
 .hero-content {
   max-width: 800px;
+  z-index: 2;
+  position: relative;
 }
 
 .hero h1 {
   font-family: 'Cinzel', serif;
-  font-size: 4.5rem;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   color: var(--asgard-gold);
   margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
 .hero p {
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
   color: var(--asgard-silver);
   margin-bottom: 2.5rem;
+}
+
+/* Imagem 3D no Hero */
+.hero-image-3d {
+  position: absolute;
+  right: 5%; /* Ajusta a posição à direita */
+  bottom: 0;
+  width: 350px; /* Tamanho para desktop */
+  height: auto;
+  z-index: 1; /* Abaixo do conteúdo principal */
+  transform-style: preserve-3d; /* Permite transformações 3D nos filhos */
+  transform: rotateY(15deg) rotateX(5deg) translateZ(0); /* Leve rotação 3D inicial */
+  transition: transform 0.5s ease-out; /* Suavidade na transição */
+}
+
+.hero-image-3d img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Adiciona uma sombra que simula profundidade */
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.7));
+}
+
+/* Animação 3D sutil ao hover e toque */
+.hero-image-3d:hover,
+.hero-image-3d:active { /* :active para mobile touch */
+  transform: rotateY(5deg) rotateX(2deg) translateZ(50px); /* Move e rotaciona levemente ao passar o mouse/tocar */
 }
 
 /* Botões */
@@ -179,30 +272,61 @@ header.header-scrolled {
   font-weight: 700;
   transition: var(--transition);
   text-align: center;
+  cursor: pointer;
+  border: none;
+  font-size: 1.1rem;
 }
 
 .btn-primary {
   background: linear-gradient(45deg, var(--storm-blue), var(--thunder));
   color: white;
   border: 2px solid var(--asgard-gold);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:active { /* :active para mobile touch */
   background: linear-gradient(45deg, var(--thunder), var(--storm-dark));
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .btn-secondary {
   background: linear-gradient(45deg, var(--asgard-gold), var(--lightning-yellow));
   color: var(--dark-metal);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-secondary:active { /* :active para mobile touch */
   background: linear-gradient(45deg, var(--lightning-yellow), var(--asgard-gold));
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Seções */
 .section {
-  padding: 100px 0;
+  padding: 6rem 0;
+  position: relative;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-family: 'Cinzel', serif;
+  color: var(--asgard-gold);
+  font-size: 2.5rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: var(--asgard-gold);
+  margin: 1rem auto;
+  border-radius: 3px;
 }
 
 /* Grid */
@@ -222,23 +346,42 @@ header.header-scrolled {
   padding: 30px;
   border: 2px solid var(--asgard-gold);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card:hover,
+.card:active { /* :active para mobile touch */
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 .product-image {
   width: 100%;
-  height: 300px;
+  height: 250px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .product-image,
+.card:active .product-image { /* :active para mobile touch */
+  transform: scale(1.05);
 }
 
 .card h3 {
   color: var(--asgard-gold);
   margin-bottom: 15px;
+  font-size: 1.5rem;
 }
 
 .card p {
   color: var(--asgard-silver);
+  flex-grow: 1;
+  margin-bottom: 15px;
 }
 
 .price {
@@ -246,70 +389,422 @@ header.header-scrolled {
   color: var(--asgard-gold);
   display: block;
   margin: 20px 0;
+  font-weight: 700;
+}
+
+/* Ajuste da imagem na seção "Sobre" */
+.about-image {
+  display: flex; /* Para centralizar a imagem */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente, se necessário */
+}
+
+.about-image img {
+  max-width: 300px; /* Define o tamanho máximo da imagem */
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--asgard-gold);
+  transition: transform 0.3s ease;
+}
+
+.about-image img:hover,
+.about-image img:active { /* :active para mobile touch */
+  transform: scale(1.05);
 }
 
 /* Footer */
 .footer {
   background: var(--dark-metal);
   border-top: 3px solid var(--asgard-gold);
-  padding: 100px 0 30px;
+  padding: 5rem 0 2rem;
 }
 
-.footer h3,
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.footer h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
 .footer h4 {
-  color: var(--asgard-gold);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
 }
 
 .footer a {
   color: var(--asgard-silver);
+  text-decoration: none;
+  transition: var(--transition);
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .footer a:hover {
   color: var(--asgard-gold);
+  padding-left: 5px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.social-icons a:hover,
+.social-icons a:active { /* :active para mobile touch */
+  background: var(--asgard-gold);
+  color: var(--dark-metal);
+  transform: translateY(-5px);
 }
 
 .footer .copy-info {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 3rem;
   border-top: 1px solid rgba(255, 215, 0, 0.2);
   padding-top: 20px;
+  color: var(--asgard-silver);
+  font-size: 0.9rem;
 }
 
+/* Formulário de Contato */
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(34, 34, 34, 0.8);
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 2px solid var(--asgard-gold);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--asgard-silver);
+  font-weight: 600;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--asgard-gold);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Modal Carrinho */
+.cart-modal {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  background: var(--dark-metal);
+  z-index: 1100;
+  padding: 1.5rem;
+  transition: right 0.4s ease;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  border-left: 2px solid var(--asgard-gold);
+}
+
+.cart-modal.active {
+  right: 0;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.close-cart {
+  background: none;
+  border: none;
+  color: var(--asgard-silver);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.close-cart:hover,
+.close-cart:active { /* :active para mobile touch */
+  color: var(--asgard-gold);
+}
+
+.cart-items {
+  margin-bottom: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  gap: 15px;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--asgard-gold);
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-price {
+  color: var(--asgard-gold);
+  font-weight: 700;
+}
+
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cart-item-remove:hover,
+.cart-item-remove:active { /* :active para mobile touch */
+  color: #ff0000;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 1.5rem 0;
+  color: var(--asgard-gold);
+}
+
+.cart-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.cart-buttons .btn {
+  flex: 1;
+  padding: 0.8rem;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Galeria */
+.collectibles-3d {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.collectible {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 300px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  /* Habilita o contexto 3D para o card do item */
+  transform-style: preserve-3d;
+}
+
+.collectible:hover,
+.collectible:active { /* :active para mobile touch */
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg); /* Adiciona rotação 3D ao hover/toque */
+}
+
+.collectible img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  /* Move a imagem levemente para frente no eixo Z */
+  transform: translateZ(0); 
+}
+
+.collectible:hover img,
+.collectible:active img { /* :active para mobile touch */
+  transform: scale(1.1) translateZ(20px); /* Escala e move mais para frente no hover/toque */
+}
+
+.collectible .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1.5rem;
+  transform: translateY(100%) translateZ(10px); /* Move para fora e para frente */
+  transition: transform 0.3s ease;
+}
+
+.collectible:hover .info,
+.collectible:active .info { /* :active para mobile touch */
+  transform: translateY(0) translateZ(10px); /* Volta e fica na frente */
+}
+
+
 /* Media Queries */
+@media (max-width: 992px) {
+  .section {
+    padding: 5rem 0;
+  }
+  /* Ajuste da imagem 3D para tablets */
+  .hero-image-3d {
+    width: 300px; /* Um pouco menor para tablets */
+    right: 2%;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-menu {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 80px;
+    top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(34, 34, 34, 0.98);
+    background: rgba(17, 17, 17, 0.98);
+    padding: 1.5rem 0;
     border-top: 2px solid var(--asgard-gold);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
   }
+  
   .nav-menu.active {
     display: flex;
   }
+  
+  .nav-menu li {
+    margin: 0;
+    text-align: center;
+  }
+  
+  .nav-menu a {
+    display: block;
+    padding: 1rem;
+  }
+  
   .nav-toggle {
     display: block;
   }
-  .hero h1 {
-    font-size: 3rem;
+  
+  .hero {
+    text-align: center;
+    padding-top: 80px;
+    min-height: 80vh; /* O hero um pouco menor em telas menores */
   }
-  .hero p {
-    font-size: 1.3rem;
+
+  .hero-content {
+      max-width: 90%;
+      margin: 0 auto;
+  }
+  
+  /* Ajuste da Imagem 3D para Celulares */
+  .hero-image-3d {
+    position: relative; /* Volta para o fluxo normal do hero-content */
+    order: -1; /* Coloca a imagem antes do texto no layout flex */
+    width: 200px; /* Tamanho bem menor para mobile */
+    margin: 2rem auto 0; /* Centraliza a imagem acima do texto */
+    right: auto; /* Remove o alinhamento à direita */
+    bottom: auto; /* Remove o alinhamento ao fundo */
+    transform: rotateY(0deg) rotateX(0deg) translateZ(0); /* Remove a rotação inicial para mobile */
+  }
+
+  .hero-image-3d:hover,
+  .hero-image-3d:active {
+    transform: rotateY(0deg) rotateX(0deg) translateZ(0); /* Desativa o hover 3D para mobile */
+  }
+
+  .cart-modal {
+    max-width: 100%;
+  }
+
+  /* Ajuste da imagem na seção "Sobre" para telas menores */
+  .about-image img {
+    max-width: 200px; /* Reduz ainda mais a imagem em telas menores */
   }
 }
 
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 2.5rem;
+@media (max-width: 576px) {
+  .section {
+    padding: 4rem 0;
   }
-  .hero p {
-    font-size: 1.1rem;
+  
+  .section-title {
+    font-size: 2rem;
   }
-  .footer-grid {
-    grid-template-columns: 1fr;
+  
+  .btn {
+    width: 100%;
+    padding: 0.9rem;
+  }
+  
+  .cart-item {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
-    }
+}
